@@ -1,0 +1,150 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>天天生鲜-购物车</title>
+<link rel="shortcut icon" th:href="@{front/images/copylogo.png}">
+<link rel="stylesheet" th:href="@{front/css/reset.css}">
+<link rel="stylesheet" th:href="@{front/css/main.css}">
+<link rel="stylesheet" th:href="@{front/css/cart.css}">
+    <script type="text/javascript" th:src="@{front/js/jquery-3.5.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{front/js/car.js}"></script>
+    <script type="text/javascript" th:src="@{front/js/search.js}"></script>
+</head>
+
+<body>
+<!-- 头部  -->
+<div th:replace="commons/bar::topbar"></div>
+
+<!-- 搜素框 -->
+<div th:replace="commons/bar::#searchbar"></div>
+    
+    <!-- 购物车 -->
+    <div class="cart_con">
+    	<h2 class="total_count">全部商品<em id="total_count">0</em>件</h2>
+    	<div class="cart_list_th clearfix">
+        	<ul>
+            	<li class="col01">商品名称</li>
+            	<li class="col02">商品单位</li>
+                <li class="col03">商品价格(元)</li>
+                <li class="col04">数量</li>
+                <li class="col05">小计</li>
+                <li class="col06">操作</li>
+            </ul>
+        </div>
+    	<div class="cart_list_td clearfix" id="cart_goods">
+            <!--<ul>-->
+            <!--<li class="col01"><input type="checkbox" checked></li>-->
+            <!--<li class="col02"><img src="images/goods/goods003.jpg"></li>-->
+            <!--<li class="col03">牛奶草莓<br><em>16.80元/500g</em></li>-->
+            <!--<li class="col04">500g</li>-->
+            <!--<li class="col05">16.80</li>-->
+            <!--<li class="col06">-->
+            <!--<div class="num_add">-->
+            <!--<a href="javascript:void(0)" onclick="lost(this)" class="minus fl">-</a>-->
+            <!--<input type="text" value="1" class="num_show fl">-->
+            <!--<a href="javascript:void(0)" onclick="add(this)" class="add fl">+</a>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--<li class="col07">16.80</li>-->
+            <!--<li class="col08"><a href="javascript:;" onclick="delGoods(this)">删除</a></li>-->
+            <!--</ul>-->
+        </div>
+    	<div class="setElements">
+        	<ul>
+            	<li class="col01"><input type="checkbox" id="all"></li>
+            	<li class="col02"><label for="all">全选</label></li>
+                <li class="col03">合计(不含运费)：<span>￥</span><em id="totalPrices"></em><br>共计<b id="totalNumbers"></b>件商品</li>
+                <li class="col04"><a href="javascript:gotoPay()">去结算</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 版权所有 -->
+	<div class="footer">
+    	<div class="foot_link">
+    		<a href="#">关于我们</a> <span> | </span>
+            <a href="#">联系我么</a> <span> | </span>
+            <a href="#">招聘人才</a> <span> | </span>
+            <a href="#">友情链接</a> 
+    	</div>
+    	<p>CopyRight &copy; 2019 衡阳市源辰信息科技有限公司 All Rights Reserverd</p>
+        <p>电话：0734-8355998 湘ICP备16015987号</p>
+    </div>
+<script>
+
+    //检查用户是否已经登录
+    $.post("/member/check", null, function (data) {
+        if (null !=  data) {
+            //登录就显示购物车数量
+            shoppingCart();
+        }
+    }, "json");
+    //显示购物车数量
+    function shoppingCart() {
+        $.post("/cart/finds", null, function (data) {
+            console.log(data.length);
+            $("#show_count").text(data.length);
+        }, "json");
+    }
+
+    $(function () {
+        $.post("/cart/find", null, function (data) {
+            var str = '';
+            if (null == data || undefined == data) {
+                str = '<ul><li>您还未添加任何商品，快去浏览商品吧</li></ul>';
+                $("#cart_goods").html("").append($(str));
+                return;
+            }
+            $.each(data, function (index, item) {
+                str += '<ul><li class="col01"><input type="checkbox" checked value="' + item.cno + '"></li>';
+                str += '<li class="col02"><img src="' + item.pics.split(";")[0] + '"></li><li class="col03">' + item.gname + '<br></li>';
+                str += ' <li class="col04">' + item.weight + '/' + item.unit + '</li><li class="col05">' + item.price + '</li><li class="col06"><div class="num_add">';
+                str += ' <a href="javascript:void(0)" onclick="lost(this, ' + item.cno + ')" class="minus fl">-</a><input type="text" value="' + item.num + '" class="num_show fl">';
+                str += '<a href="javascript:void(0)" onclick="add(this, ' + item.cno + ')" class="add fl">+</a></div></li><li class="col07">' + parseInt($.trim(item.price)) * parseInt($.trim(item.num)) + '</li>';
+                str += '<li class="col08"><a href="javascript:;" onclick="delGoods(this, ' + item.cno + ')">删除</a></li></ul>';
+            });
+            $("#cart_goods").html("").append($(str));
+            productCount();
+            var checkboxs = $("#cart_goods input[type='checkbox']");
+            var len = checkboxs.length;
+            for (var i = 0; i < len; i++) {
+                checkboxs[i].onclick = function () {
+                    productCount();
+                    for (var j = 0; j < len; j++) {
+                        if (!checkboxs[j].checked) {
+                            $("#all").prop("checked", false);
+                            console.info("noAll");
+                            return;
+                        }
+                    }
+                    console.info("All");
+                    $("#all").prop("checked", true);
+                }
+            }
+        }, "json");
+    });
+
+    function checkAll(val) {
+        $("#cart_goods input[type='checkbox']").each(function () {
+            $(this).prop("checked", val);
+        })
+    }
+
+    function gotoPay() {
+        var str = [];
+        $("#cart_goods input[type='checkbox']").each(function () {
+            if ($(this).prop("checked")) {
+                str[str.length] = $(this).val();
+            }
+        });
+        if (str.length <= 0){
+            alert("您还未选择任何商品。。。");
+            return;
+        }
+        location.href = "order?cno=" + str.join(",");
+    }
+</script>
+
+</body>
+</html>

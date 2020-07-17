@@ -1,0 +1,174 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" >
+<title>电脑商城</title>
+<link rel="short icon" th:href="@{front/images/computerMall.jpg}">
+<link rel="stylesheet" th:href="@{front/css/reset.css}">
+<link rel="stylesheet" th:href="@{front/css/index.css}">
+<link rel="stylesheet" th:href="@{front/css/foot.css}">
+</head>
+
+<body >
+<!-- 头部  -->
+<div th:replace="commons/bar::topbar"></div>
+
+<!-- 搜素框 -->
+<div th:replace="commons/bar::#searchbar"></div>
+
+    <!-- 商品分类 -->
+    <div class="navbar_con">
+    	<div class="navbar">
+    		<h1 class="fl">全商品分类</h1>
+    		<ul class="navlist fl">
+    			<li><a href="">首页</a></li>
+                <li class="interval">|</li>
+                <li><a href="">手机生鲜</a></li>
+                <li class="interval">|</li>
+                <li><a href="">抽奖</a></li>
+    		</ul>
+    	</div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <div class="center_con clearfix">
+        <div class="subnav fl" id="type">
+            <ul >
+            </ul>
+        </div>
+        <div class="slide fl">
+            <ul class="slide_pics">
+                <li><a href="" class=""><img th:src="@{front/images/Acer01.jpg}" alt="幻灯片"></a></li>
+                <li><a href="" class=""><img th:src="@{front/images/ASUS01.jpg}" alt="幻灯片"></a></li>
+                <li><a href="" class=""><img th:src="@{front/images/Lenovo02.jpg}" alt="幻灯片"></a></li>
+                <li><a href="" class=""><img th:src="@{front/images/ThinkPad02.jpg}" alt="幻灯片"></a></li>
+            </ul>
+            <div class="prev"></div>
+            <div class="next"></div>
+            <ul class="points"></ul>
+        </div>
+        <div class="adv fl">
+            <a href=""><img th:src="@{front/images/computer/activity.jpg}" alt="清凉一夏"></a>
+            <a href=""><img src="" alt="盛夏尝鲜"></a>
+        </div>
+    </div>
+    
+    <!-- 商品展示 -->
+    <div id="goods_info">
+<!--
+    </div>
+    
+    <!-- 版权所有 -->
+    <div class="footer">
+    	<div class="foot_link">
+        	<a href="#">关于我们</a> <span> | </span>
+            <a href="#">联系我们</a> <span> | </span>
+            <a href="#">招聘广告</a> <span> | </span>
+            <a href="#">友情链接</a>
+        </div>
+    	<p>CopyRight &copy; 2019 衡阳市源辰信息科技有限公司 All Rights Reserverd</p>
+        <p>电话：0734-8355998 湘ICP备16015987号-1</p>
+    </div>
+    
+    <!--  注意引入顺序 -->
+	<script th:src="@{front/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{front/js/jquery-ui.min.js}"></script>
+    <script th:src="@{front/js/slide.js}"></script>
+    <script th:src="@{front/js/search.js}"></script>
+    <script>
+        //检查用户是否已经登录
+            $.post("/member/check", null, function (data) {
+                if (null !=  data) {
+                    //登录就显示购物车数量
+                    shoppingCart();
+                }
+            }, "json");
+        //显示购物车数量
+        function shoppingCart() {
+            $.post("/cart/finds", null, function (data) {
+                console.log(data.length);
+                $("#show_count").text(data.length);
+            }, "json");
+        }
+
+        //页面加载完毕，发送请求，得到类别
+        $.post("/type/getGoodsType",null, function (data) {
+            var str ='';
+            var arr =["mac", "dell","hp", "acer", "asus", "thinkpad"];
+            //有了数据就开始字符串拼接
+            for (var i =0; i<data.length; i++){
+                str+='<li><a href="goods?tno='+data[i].tno+'"  class="'+arr[i]+'">'+data[i].tname+'</a></li>';
+            }
+        $("#type").html(str);
+        })
+
+
+        function findGoodsByTno(tno){
+            console.log("1");
+            var tno = tno;
+            $.post("/type/findGoodsByTno", {tno:tno}, function (data) {
+                console.log(data);
+            },"json");
+        }
+
+
+        function findGodsMore(tno) {
+            var tno = tno;
+            $.post("/goods/findGoodsMore",{tno:tno},function (data) {
+                console.log(data);
+                if (null != data){
+                    alert("查看更多");
+                    location.href="goods.html";
+                }
+            },"json")
+        }
+
+		//获取url地址栏
+    	function getQueryString(name) {
+			//正则表达式
+			var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+			///获取url中从问号（"?"符）开始的字符串
+			var url = decodeURI(window.location.search);
+			//截取？后面的字符串
+			var r = url.substr(1).match(reg);
+			if (r != null) {
+				//decodeURI() 函数可对 encodeURI() 函数编码过的 URI 进行解码
+				return decodeURI(r[2]);
+			}
+			return null;
+		}
+
+		//调用此方法
+		var nickName = getQueryString("nickName");
+		//用户昵称
+		if( nickName != null && nickName != ''){
+			$(".login_info em").text(nickName);
+		}
+
+        //页面加载完毕发送请求，得到类别,在根据类型查找商品
+        $(function () {
+            $.post("/goods/findinfoAndType", null, function (data) {
+                var str = "";
+                $.each(data, function (index, item) {
+                    var typeStr = "";
+                    var infoStr = "";
+                    typeStr += '<div class="list_model"><div class="list_title clearfix"><h3 class="fl" id="model03">' + item.tname + '</h3><div class="subtitle fl"><span>|</span>';
+                    $.each(item.goodsInfos, function (number, value) {
+                        typeStr += '<a href="">' +value.gname + '</a>';
+                        infoStr += '<li><h4><a href="details?gno=' + value.gno + '">' + value.gname +'</a></h4><a href="details?gno=' + value.gno + '"><img src="' + value.pics + '"></a>';
+                        infoStr += '<div class="prize">￥ ' + value.price + '</div></li>';
+                    })
+                    typeStr += '</div><a href="goods?tno=' + item.tno +'" class="goods_more fr" id="fruit_more">查看更多</a></div>';
+                    typeStr += '<div class="goods_con clearfix"><ul class="goods_list fl">';
+                    infoStr += '</ul></div></div>';
+                    str += typeStr + infoStr;
+                });
+                console.info(str);
+                $("#goods_info").html("").append($(str));
+            }, "json")
+        })
+
+
+    </script>
+</body>
+</html>

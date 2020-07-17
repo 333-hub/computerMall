@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>源辰-用户会员管理</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var statusObj = ["封禁", "正常"]
+        $(function () {
+            $.get("/member/findAll", null, function(data){
+                var str = "";
+                $.each(data, function(index, item){
+                    str += "<tr><td>" + item.mno + "</td><td>" + item.nickName + "</td>";
+                    str += "<td>" + item.realName + "</td><td>" + item.tel + "</td>";
+                    str += "<td>" + item.email + "</td>";
+                    str += "<td><img src='../../" + item.photo + "' width='50px' height='75px'/> </td>";
+                    str += "<td>" + item.regDate + "</td><td>" + statusObj[item.status] + "</td>"
+                    str += "<td>重置密码</td></tr>";
+                })
+                $("#menber_info").html("").html(str);
+            }, "json");
+        })
+    </script>
+</head>
+
+<body>
+
+<div id="table" class="mt10">
+    <div class="box span10 oh">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <thead>
+            <tr>
+                <th width="10%">会员编号</th>
+                <th width="10%">昵称</th>
+                <th width="10%">真实姓名</th>
+                <th width="10%">手机号码</th>
+                <th width="10%">邮箱</th>
+                <th width="20%">图像</th>
+                <th width="10%">注册日期</th>
+                <th width="10%">账号状态</th>
+                <th width="10%">操作</th>
+            </tr>
+            </thead>
+            <tbody id="menber_info" align="center">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>

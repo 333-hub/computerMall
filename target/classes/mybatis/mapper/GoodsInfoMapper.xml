@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsx.computermall.mapper.GoodsInfoMapper">
+    <!--根据商品类型就行模糊查询-->
+    <select id="findByName"  parameterType="String" resultType="GoodsInfo">
+        select
+            i.*, t.*
+        from
+            goodstype t, goodsinfo i
+        where
+            t.tno = i.tno
+        and
+            tname like concat('%',#{tname},'%')
+    </select>
+
+    <!--根据商品编号进行查询商品信息-->
+    <select id="findByGno" parameterType="int" resultType="GoodsInfo">
+        select gno,gname,price,intro,balance,pics,unit,descr from goodsinfo good where gno = #{_parameter}
+    </select>
+
+    <!--查询商品请五条记录，用于主页展示-->
+    <select id="findInfoAndType" resultMap="findAllMap">
+        select info.*,type.* from goodsinfo info, goodstype type where (select count(1) from goodsinfo gi where gi.tno = info.tno and gi.gno &gt; info.gno) &lt; 5 and info.tno = type.tno order by gno asc
+    </select>
+
+    <insert id="add" parameterType="GoodsInfo" useGeneratedKeys="true" keyProperty="gno">
+        insert into goodsinfo(gname, tno, price, intro, balance, pics, unit, descr) values (#{gname}, #{tno}, #{price}, #{intro}, #{balance}, #{pics}, #{unit}, #{descr});
+    </insert>
+
+    <!--商品类型中有商品信息的链表-->
+    <resultMap id="findAllMap" type="GoodsType" autoMapping="true">
+        <id property="tno" column="tno" jdbcType="INTEGER"></id>
+        <!--一对多-->
+        <collection property="goodsInfos" javaType="ArrayList" ofType="GoodsInfo" autoMapping="true">
+            <id property="gno" column="gno" jdbcType="INTEGER"></id>
+        </collection>
+    </resultMap>
+</mapper>

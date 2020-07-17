@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{front/js/jquery-3.4.1.min.js}">
+    <link rel="stylesheet" th:href="@{front/js/search.js}">
+</head>
+<body>
+<!--topbar-->
+<div class="header_con" th:fragment="topbar">
+
+    <div class="header">
+        <div class="welcome fl">欢迎来到电脑商城</div>
+        <div class="fr">
+            <div class="login_info fl" th:if="${session.currentMember} != null" style="display: block">
+                欢迎：<em>[[${session.currentMember.nickName}]]</em>
+            </div>
+            <div class="login_btn fl" th:if="${session.currentMember} == null">
+                <a class="btn btn-sm" th:href="@{/login}">登录</a>
+                <span> | </span>
+                <a class="btn btn-sm" th:href="@{/register}">注册</a>
+            </div>
+            <div class="user_link fl">
+                <span> | </span>
+                <a class="btn btn-sm" th:href="@{/user}">用户中心</a>
+                <span> | </span>
+                <a class="btn btn-sm" th:href="@{/cart}" >我的购物车</a>
+                <span> | </span>
+                <a class="btn btn-sm" th:href="@{/order}">我的订单</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- searchbar -->
+<div class="search_bar clearfix" id="searchbar">
+    <div class="search_con fl">
+        <form action="goodsName">
+            <input type="text" class="input_text fl" name="tname" placeholder="根据商品类型模糊查询">
+            <input type="submit" value="搜索" class="input_btn fr">
+        </form>
+    </div>
+    <div class="guest_cart fr" >
+        <a href="cart" th:onclick="'shoppingCart()'" class="cart_name fl">我的购物车</a>
+        <div class="goods_count fl" id="show_count" th:if="${session.currentMember}==null">0</div>
+        <div class="goods_count fl" id="show_count" th:if="${session.currentMember}!=null"></div>
+    </div>
+</div>>
+</body>
+</html>

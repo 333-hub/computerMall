@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsx.computermall.mapper.GoodsTypeMapper">
+    <select id="findAllType" resultType="GoodsType">
+        select * from goodstype order by tno;
+    </select>
+    <!--查询商品类型，显示在主页-->
+    <select id="findGoodsType" resultMap="findMap">
+        select type.tno, type.tname, info.gno, info.gname, info.pics,
+         info.price from goodstype type left join goodsinfo info on type.tno = info.tno order by type.tno;
+    </select>
+
+    <!--根据商品类型id，查询商品信息-->
+    <select id="findGoodsByTno" parameterType="int" resultType="GoodsInfo">
+        select i.*, t.tname from goodsinfo i,goodstype t where i.tno=t.tno and t.tno=#{_parameter}
+    </select>
+
+    <!--查询所有商品类型，用于添加商品类型-->
+    <select id="findAll" resultMap="findMap">
+        select type.*,info.* from goodstype type,goodsinfo info order by type.tno;
+    </select>
+
+
+    <resultMap id="findMap" type="GoodsType">
+        <id column="tno" property="tno"/>
+        <result property="tname" column="tname"/>
+        <!--一对多关系-->
+        <collection property="goodsInfos" ofType="GoodsInfo">
+            <id column="gno" property="gno"/>
+            <result property="gname" column="gname"/>
+            <result column="price" property="price"/>
+            <result property="intro" column="intro"/>
+            <result column="balance" property="balance"/>
+            <result property="pice" column="pice"/>
+            <result column="unit" property="unit"/>
+        </collection>
+    </resultMap>
+</mapper>

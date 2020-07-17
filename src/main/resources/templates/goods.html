@@ -1,0 +1,140 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>天天生鲜-商品列表</title>
+ <link rel="shortcut icon" th:href="@{front/images/copylogo.png}">
+ <link rel="stylesheet" th:href="@{front/css/reset.css}">
+ <link rel="stylesheet" th:href="@{front/css/main.css}">
+ <link rel="stylesheet" th:href="@{front/css/goods.css}">
+ <link rel="stylesheet" th:href="@{front/js/goods.js}">
+</head>
+
+<body>
+<!-- 头部  -->
+<div th:replace="commons/bar::topbar"></div>
+
+<!-- 搜素框 -->
+<div th:replace="commons/bar::#searchbar"></div>
+     
+    <!-- 全部商品分类 --> 
+    <div class="navbar_con">
+    	<div class="navbar clearfix">
+        	<!-- 动态下拉框 -->
+    		<div class="subnav_con fl">
+            	<h1 class="fl">全商品分类</h1>
+            	<span></span>
+                <ul class="subnav" id="type">
+
+            	</ul>
+            </div>
+
+    	</div>
+    </div>
+     
+    <!-- 面包屑导航 --> 
+    <div class="breadcrumb" id="breadcrumb">
+     	<a href="javascript:void(0)">全部分类</a>
+        <span>&gt;</span>
+        <a href="javascript:void(0)">Mac</a>
+     </div>
+     
+     <!-- 商品展示区域-->
+     <div class="main_wrap clearfix">
+
+        <!-- 热门类型查询 -->
+        <div class="r_wrap fr clearfix">
+        	<div class="sort_bar">
+            	<a href="javascript:void(0);" id="normal" class="type active">默认</a>
+                <a href="javascript:void(0);" id="price" class="type ">价格</a>
+                <a href="javascript:void(0);" id="manUse" class="type ">人气</a>
+            </div>
+        	<ul class="goods_type_list clearfix show1">
+          		<li th:each="good : ${goods}">
+                    <a th:href="@{/details(gno=${good.gno})}"><img th:src="${good.pics}"></a>
+                    <h4><a th:href="@{/details}">[[${good.gname}]]</a></h4>
+                    <div class="operate">
+                    	<span class="prize">[[${good.price}]]</span>
+                        <span class="unit">[[${good.unit}]]</span>
+                        <a href="javaScript:void(0);" class="add_goods" th:onclick="'add_cart('+${good.gno}+')'" title="加入购物车"></a>
+                    </div>
+                </li>
+            </ul>
+			     <!-- 分页栏-->
+			<div class="pagenation">
+				<ul>
+					<li><a href="#">上一页</a></li>
+					<li><a href="#" class="active">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">下一页</a></li>
+				</ul>
+			</div>
+        </div>
+
+     </div>
+    <!-- 版权所有 -->
+    <div class="footer">
+    	<div class="foot_link">
+        	<a href="#">关于我们</a> <span> | </span>
+            <a href="#">联系我们</a> <span> | </span>
+            <a href="#">招聘广告</a> <span> | </span>
+            <a href="#">友情链接</a>
+        </div>
+    	<p>CopyRight &copy; 2019 衡阳市源辰信息科技有限公司 All Rights Reserverd</p>
+        <p>电话：0734-8355998 湘ICP备16015987号</p>
+    </div>
+    <script type="text/javascript" th:src="@{front/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{front/js/search.js}"></script>
+    <script>
+
+        //检查用户是否已经登录
+        $.post("/member/check", null, function (data) {
+            if (null !=  data) {
+                //登录就显示购物车数量
+                shoppingCart();
+            }
+        }, "json");
+        //显示购物车数量
+        function shoppingCart() {
+            $.post("/cart/finds", null, function (data) {
+                console.log(data.length);
+                $("#show_count").text(data.length);
+            }, "json");
+        }
+
+        //页面加载完毕发送请求，得到类别,在根据类型查找商品
+        $.post("/type/getGoodsType", null,function (data) {
+            var str = "";
+            if (null != data){
+                for(var i =0; i<data.length; i++){
+                    str+='<li><a href="goods?tno= ' +data[i].tno+ '">'+data[i].tname+'</a></li>';
+                }
+                console.info(str);
+                $("#type").html("").append(str);
+            }
+        },"json");
+
+        function add_cart(gno){
+            var Gno = gno;//商品id
+            console.log(gno);
+            $.post("/goods/add_cart",{Gno : gno},function(data){
+                if(data == -1){
+                    //未登录，返回登录页面
+                    alert("加入购物车成功，您未登录!!!!")
+                    location.href="login.html";
+                }else if (data>0){
+                    //
+                    alert("加入购物车成功!!!!")
+                }
+
+            },"json")
+        }
+
+
+
+	</script>
+</body>
+</html>

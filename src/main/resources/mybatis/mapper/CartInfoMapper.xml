@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsx.computermall.mapper.CartInfoMapper">
+    <!--根据用户编号，查询购物车中的商品数量
+        _parameter：如果只有一个参数，_parameter就代表这个参数；
+        如果有多个参数，可以用get(0)获取第一个参数
+    -->
+    <select id="getTotal" parameterType="String" resultType="int">
+        select count(cno) from cartinfo
+        <where>
+            <if test="_parameter != null">
+                mno = #{_parameter}
+            </if>
+        </where>
+    </select>
+
+    <!--添加商品到购物车-->
+    <insert id="add" parameterType="CartInfo">
+        insert into cartinfo values(
+            #{cno},#{mno},#{gno},#{num}
+        )
+    </insert>
+
+    <select id="findByMno" parameterType="int" resultType="CartInfo">
+        select goods.gno,gname, price, pics, unit, cno, mno, num from goodsinfo goods, cartinfo cart where goods.gno = cart.gno
+    </select>
+
+    <select id="finds" parameterType="int" resultType="CartInfo">
+        select * from cartinfo where mno=#{_parameter}
+    </select>
+
+    <delete id="deleteByCno" parameterType="String">
+        delete from cartinfo where cno=#{_parameter}
+    </delete>
+
+    <update id="update" parameterType="CartInfo">
+        update cartinfo set num = num + #{num} where cno = #{cno}
+    </update>
+
+    <select id="findByCnos" resultType="CartInfo">
+        select gname, price, pics, unit, weight, cart.cno, mno, num from goodsinfo goods, cartinfo cart where goods.gno = cart.gno and cno in
+        <foreach collection="array" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

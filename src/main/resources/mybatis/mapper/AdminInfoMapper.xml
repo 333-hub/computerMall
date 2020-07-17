@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsx.computermall.mapper.AdminInfoMapper">
+    <select id="login" parameterType="Map" resultType="AdminInfo" >
+        select  aid, aname, pwd, tel from admininfo where (aname = #{aname} or tel = #{aname}) and  pwd = #{pwd}
+    </select>
+
+    <insert id="add" parameterType="AdminInfo" useGeneratedKeys="true" keyProperty="aid">
+        insert into admininfo(aname, pwd, tel) values (#{aname}, password(#{pwd}), #{tel});
+    </insert>
+
+    <select id="findAll" resultType="AdminInfo">
+        select * from admininfo;
+    </select>
+
+    <update id="update" parameterType="int">
+        update admininfo set pwd = password(right(tel ,6)) where aid=#{parameter}
+    </update>
+</mapper>

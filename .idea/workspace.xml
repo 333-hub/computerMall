@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ec4566f4-e102-4f30-a063-4e9b6c58e7c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xsx/computermall/controller/GoodsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xsx/computermall/controller/GoodsInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/commons/bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/commons/bar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goods.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goods.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/xsx/computermall/ComputermallApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/xsx/computermall/ComputermallApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="computermall@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="computermall@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="computermall@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="computermall: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="HTML File" />
+        <option value="spring-beans.schema" />
+        <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Zc0YTfYExFEGpAAmh7v6vgXu8O" />
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/src/main/java/com/xsx/computermall" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.47525895" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\毕业设计\computermall\src\main\resources\META-INF" />
+      <recent name="E:\毕业设计\computermall\pics" />
+      <recent name="E:\毕业设计\computermall\src\main\resources\templates\back\manager" />
+      <recent name="E:\毕业设计\computermall\src\main\resources\mybatis\mapper" />
+      <recent name="E:\毕业设计\computermall\src\main\resources\static\front\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\毕业设计\computermall\src\main\resources\static\pics\2020-5-10" />
+      <recent name="E:\毕业设计\computermall\src\main\resources\static\pics" />
+      <recent name="E:\毕业设计\computermall\src\main\resources\static" />
+      <recent name="E:\毕业设计\computermall\src\main\resources\templates\back\manager" />
+      <recent name="E:\毕业设计\computermall\src\main\resources\static\front\images\computer" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ComputermallApplication">
+    <configuration name="ComputermallApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.xsx.computermall.ComputermallApplication" />
+      <module name="computermall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xsx.computermall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComputermallApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="computermall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xsx.computermall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xsx.computermall" />
+      <option name="MAIN_CLASS_NAME" value="com.xsx.computermall.ComputermallApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComputermallApplicationTests.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="computermall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xsx.computermall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xsx.computermall" />
+      <option name="MAIN_CLASS_NAME" value="com.xsx.computermall.ComputermallApplicationTests" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComputermallApplicationTests.upload (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="computermall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xsx.computermall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xsx.computermall" />
+      <option name="MAIN_CLASS_NAME" value="com.xsx.computermall.ComputermallApplicationTests" />
+      <option name="METHOD_NAME" value="upload(javax.servlet.http.HttpServletRequest)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComputermallApplicationTests.upload" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="computermall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xsx.computermall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xsx.computermall" />
+      <option name="MAIN_CLASS_NAME" value="com.xsx.computermall.ComputermallApplicationTests" />
+      <option name="METHOD_NAME" value="upload" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComputermallApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="computermall" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.xsx.computermall.ComputermallApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ComputermallApplication" />
+      <item itemvalue="JUnit.ComputermallApplicationTests" />
+      <item itemvalue="JUnit.ComputermallApplicationTests.test" />
+      <item itemvalue="JUnit.ComputermallApplicationTests.upload" />
+      <item itemvalue="JUnit.ComputermallApplicationTests.upload (1)" />
+      <item itemvalue="Spring Boot.ComputermallApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ComputermallApplication" />
+        <item itemvalue="JUnit.ComputermallApplicationTests.test" />
+        <item itemvalue="JUnit.ComputermallApplicationTests.upload (1)" />
+        <item itemvalue="JUnit.ComputermallApplicationTests.upload" />
+        <item itemvalue="JUnit.ComputermallApplicationTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec4566f4-e102-4f30-a063-4e9b6c58e7c6" name="Default Changelist" comment="" />
+      <created>1585123122646</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585123122646</updated>
+      <workItem from="1585123124162" duration="11000" />
+      <workItem from="1585123144862" duration="985000" />
+      <workItem from="1585128368351" duration="1794000" />
+      <workItem from="1585130186404" duration="789000" />
+      <workItem from="1585131069977" duration="8025000" />
+      <workItem from="1585200326162" duration="26248000" />
+      <workItem from="1585287213709" duration="15781000" />
+      <workItem from="1585308856078" duration="1156000" />
+      <workItem from="1585366526421" duration="16520000" />
+      <workItem from="1585479694248" duration="8152000" />
+      <workItem from="1585560359578" duration="40000" />
+      <workItem from="1585560524275" duration="668000" />
+      <workItem from="1585630465850" duration="9967000" />
+      <workItem from="1585715855490" duration="10507000" />
+      <workItem from="1585800944991" duration="17463000" />
+      <workItem from="1585903109857" duration="5216000" />
+      <workItem from="1585919883627" duration="6624000" />
+      <workItem from="1586056479073" duration="4506000" />
+      <workItem from="1586067415140" duration="16502000" />
+      <workItem from="1586140622550" duration="4752000" />
+      <workItem from="1586157460578" duration="1777000" />
+      <workItem from="1586236848362" duration="18124000" />
+      <workItem from="1586398965374" duration="22850000" />
+      <workItem from="1586486286714" duration="19666000" />
+      <workItem from="1586570082890" duration="11614000" />
+      <workItem from="1586767574664" duration="16304000" />
+      <workItem from="1586834443034" duration="17830000" />
+      <workItem from="1586929647695" duration="25207000" />
+      <workItem from="1587479239809" duration="679000" />
+      <workItem from="1587525235093" duration="1450000" />
+      <workItem from="1587780363090" duration="27387000" />
+      <workItem from="1587866878949" duration="32787000" />
+      <workItem from="1588044750762" duration="18856000" />
+      <workItem from="1588209221798" duration="3346000" />
+      <workItem from="1588551050834" duration="26526000" />
+      <workItem from="1588649093673" duration="18704000" />
+      <workItem from="1588739812362" duration="18002000" />
+      <workItem from="1588923792151" duration="19616000" />
+      <workItem from="1589006738663" duration="16111000" />
+      <workItem from="1589077268544" duration="26690000" />
+      <workItem from="1589512950546" duration="11446000" />
+      <workItem from="1589721831884" duration="717000" />
+      <workItem from="1589858524508" duration="2902000" />
+      <workItem from="1590388995554" duration="5079000" />
+      <workItem from="1590560003439" duration="2347000" />
+      <workItem from="1590633611470" duration="1833000" />
+      <workItem from="1592372971933" duration="2141000" />
+      <workItem from="1594363715441" duration="648000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/xsx/computermall/ComputermallApplicationTests.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xsx/computermall/controller/GoodsInfoController.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/index.html</url>
+          <line>157</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

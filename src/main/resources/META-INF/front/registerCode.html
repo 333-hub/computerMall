@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邮箱验证</title>
+    <style>
+        body{
+            background-color: #F8F8F8;
+        }
+        *{
+            margin: 0;
+        }
+        .context{
+            width: 500px;
+            height: 250px;
+            background-color: #FFFFFF;
+            margin: 20px auto;
+            border:1px #9f9f9f solid;
+        }
+        .context_head{
+            width: 100%;
+            height: 65px;
+            background-color: #fcfcfc;
+        }
+        .context_main{
+            width: 100%;
+            height: 100%;
+            padding-left: 20px;
+            padding-top: 10px;
+        }
+        .context_main p{
+            padding:13px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="context">
+        <div class="context_head">
+            <h1 style=" font-size:28px;padding-left: 20px; line-height: 65px;">注册验证</h1>
+        </div>
+        <div class="context_main">
+            <p>您好{email}</p>
+            <p>欢迎注册天天生鲜，请将验证码填写到注册页面。</p>
+            <p>验证码：{code}</p>
+        </div>
+    </div>
+</body>
+</html>

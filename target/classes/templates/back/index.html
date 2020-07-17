@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>电脑商城-后台登陆</title>
+<link rel="stylesheet" th:href="@{../back/css/login.css}">
+<link rel="short icon" href="images/logo.png" type="image/x-icon">
+<script type="text/javascript" th:src="@{../back/js/jquery.min.js}"></script>
+<script type="text/javascript">
+function checkLogin() {
+	var account = $.trim($("#account").val());
+	console.log(account);
+	var pwd = $.trim($("#pwd").val());
+
+	if (account == ""){
+		alert("账号为空，请输入账号");
+	}
+
+	if (pwd == ""){
+		alert("密码为空，请输入密码");
+	}
+
+	$.post("/back/login",{aname:account, pwd:pwd}, function (data) {
+		console.log(data);
+		if (data>0){
+			location.href="manager/index";
+		}else {
+			alert("该管理员身份不存在");
+		}
+	})
+
+}
+</script>
+</head>
+<body>
+	<div id="login_top">
+		<div id="welcome">
+			欢迎使用电脑商城后台管理系统
+		</div>
+		<div id="back">
+			<a href="../index.html">返回首页</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+			<a href="#">帮助</a>
+		</div>
+	</div>
+	<div id="login_center">
+		<div id="login_area">
+			<div id="login_form">
+				<form action="" method="post" id="myform">
+					<div id="login_tip">
+						用户登录&nbsp;&nbsp;UserLogin
+					</div>
+					<div><input type="text" class="username" id="account" placeholder="请输入账号..."></div>
+					<div><input type="password" class="pwd" id="pwd" placeholder="请输入密码..."></div>
+					<div id="btn_area">
+						<input type="button"  onclick="checkLogin()" id="sub_btn" value="登&nbsp;&nbsp;录">&nbsp;&nbsp;
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="login_bottom">
+		<label style="color:#FFF"><a class="copy" href="http://www.hyycinfo.com">衡阳市源辰信息科技有限公司 </a>&copy; 版权所有</label>
+	</div>
+</body>
+</html>
